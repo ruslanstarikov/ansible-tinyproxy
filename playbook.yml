@@ -1,0 +1,5 @@
+- name: Tiny Proxy Installation
+  hosts: all
+  roles:
+    - linux
+    - tinyproxy

@@ -1,0 +1,11 @@
+ansible_ssh_pipelining: true
+ansible_ssh_user: root
+ansible_ssh_pass: ffIku1jSX
+ansible_ssh_extra_args: "-o StrictHostKeyChecking=no"
+# Make sure to change those
+proxy_users:
+  - username: not-a-real-user
+    password: not-a-real-password
+  - username: not-a-real-user
+    password: not-a-real-password
+proxy_port: 8888

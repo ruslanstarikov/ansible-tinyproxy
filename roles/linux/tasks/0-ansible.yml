@@ -1,0 +1,14 @@
+- name: Update Installation Repositories
+  raw:  apt-get update --assume-yes
+  tags: init
+  become: true
+
+- name: Install Python
+  raw:  apt-get install python --assume-yes
+  tags: init
+  become: true
+
+- name: Install Python Apt
+  raw:  apt-get install python-apt --assume-yes
+  tags: init
+  become: true

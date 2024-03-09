@@ -1,0 +1,9 @@
+- name: Install tinyproxy
+  apt:  name=tinyproxy state=present
+  become: true
+
+
+- name: Restart tinyproxy
+  service: name=tinyproxy state=restarted
+  become: true
+  tags: tinyproxy
