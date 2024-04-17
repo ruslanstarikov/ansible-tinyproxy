@@ -1,0 +1,7 @@
+---
+driver:
+  name: default
+platforms:
+  - name: LTS
+    image: ubuntu:20.04
+    pre_build_image: true

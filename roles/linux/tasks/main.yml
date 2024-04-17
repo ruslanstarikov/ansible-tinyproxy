@@ -1,2 +1,24 @@
-- import_tasks: 0-ansible.yml
-- import_tasks: 1-repo-prep.yml
+- name: Update Installation Repositories
+  raw:  apt-get update --assume-yes
+  tags: init
+  become: true
+
+- name: Install Python
+  raw:  apt-get install python --assume-yes
+  tags: init
+  become: true
+
+- name: Install Python Apt
+  raw:  apt-get install python-apt --assume-yes
+  tags: init
+  become: true
+
+- name: Install tinyproxy
+  apt:  name=tinyproxy state=present
+  become: true
+
+
+- name: Restart tinyproxy
+  service: name=tinyproxy state=restarted
+  become: true
+  tags: tinyproxy

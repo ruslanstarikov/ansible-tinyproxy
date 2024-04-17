@@ -1,1 +1,8 @@
-- import_tasks: 1-install-proxy.yml
+- name: Install tinyproxy
+  raw:  apt-get install python --assume-yes
+  tags: init
+  become: true
+
+- name: Tiny proxy config file
+  template: src=tinyproxy.j2 dest=/etc/tinyproxy/tinyproxy.conf
+  become: true
