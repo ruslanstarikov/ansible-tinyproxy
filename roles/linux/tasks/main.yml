@@ -12,13 +12,3 @@
   raw:  apt-get install python-apt --assume-yes
   tags: init
   become: true
-
-- name: Install tinyproxy
-  apt:  name=tinyproxy state=present
-  become: true
-
-
-- name: Restart tinyproxy
-  service: name=tinyproxy state=restarted
-  become: true
-  tags: tinyproxy

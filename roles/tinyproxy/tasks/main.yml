@@ -1,7 +1,11 @@
 - name: Install tinyproxy
-  raw:  apt-get install python --assume-yes
-  tags: init
+  apt:  name=tinyproxy state=present
   become: true
+
+- name: Restart tinyproxy
+  service: name=tinyproxy state=restarted
+  become: true
+  tags: tinyproxy
 
 - name: Tiny proxy config file
   template: src=tinyproxy.j2 dest=/etc/tinyproxy/tinyproxy.conf
