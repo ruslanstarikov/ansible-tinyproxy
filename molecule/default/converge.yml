@@ -2,3 +2,4 @@
 - name: Converge
   hosts: all
 - import_playbook: ../../playbook.yml
+#- import_playbook: ./verify.yml
