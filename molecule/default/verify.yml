@@ -1,0 +1,13 @@
+- name: verify
+  hosts: all
+
+  tasks:
+    - name: Verify Apache
+      uri:
+        url: http://localhost
+        status_code: 200
+      register: result
+      until: result.status == 200
+      retries: 60
+      delay: 10
+      ignore_errors: yes

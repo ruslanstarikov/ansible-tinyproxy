@@ -1,0 +1,43 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+
+platforms:
+  - name: instance
+    image: geerlingguy/docker-ubuntu2004-ansible:latest
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    command: /usr/sbin/init
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    tmpfs:
+      - /run
+      - /run/lock
+    privileged: true
+    pre_build_image: true
+    published_ports:
+      - "80:80"  # Example to expose HTTP if needed, adjust accordingly
+    capabilities:
+      - SYS_ADMIN
+    environment:
+      container: docker
+
+provisioner:
+  name: ansible
+  log: true
+  inventory:
+    host_vars:
+      instance:
+        ansible_connection: docker
+
+verifier:
+  name: ansible
